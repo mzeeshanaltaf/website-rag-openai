@@ -26,6 +26,13 @@ def sidebar_api_key_configuration():
     return api_key, is_active
 
 
+def configure_about_sidebar():
+    with st.sidebar.expander('Contact'):
+        st.markdown(''' Any Queries: Contact [Zeeshan Altaf](mailto:zeeshan.altaf@gmail.com)''')
+    with st.sidebar.expander('Source Code'):
+        st.markdown(''' Source code: [GitHub](https://github.com/mzeeshanaltaf/website-rag-openai)''')
+
+
 def get_context_retriever_chain(vstore):
     llm = ChatOpenAI(openai_api_key=st.session_state.api_key)
     retriever = vstore.as_retriever()
