@@ -1,3 +1,11 @@
+# Below code is required to fix sqlite error (unsupported version of sqlite3) while deploying
+# app on streamlit community cloud
+__import__('pysqlite3')
+import sys
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+##########
+
 from util import *
 from dotenv import load_dotenv
 
@@ -19,9 +27,13 @@ st.write("*Ask the Web* is a cutting-edge application designed to transform how 
          "you have related to that website. ")
 
 st.session_state.api_key, is_active = sidebar_api_key_configuration()
+st.sidebar.divider()
+st.sidebar.subheader("About")
+configure_about_sidebar()
 
 st.subheader('Enter Website URL')
-website_url = st.text_input("Website URL", placeholder="Enter URL", label_visibility="collapsed", disabled=not is_active)
+website_url = st.text_input("Website URL", placeholder="Enter URL", label_visibility="collapsed",
+                            disabled=not is_active)
 process = st.button("Process", type="primary", disabled=not website_url)
 
 if process:
