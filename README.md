@@ -3,7 +3,7 @@ Ask the Web is a cutting-edge application designed to transform how you interact
 and it will leverage advanced artificial intelligence to answer any question you have related to that website.
 
 # Application Link
-N/A
+https://ask-the-web.streamlit.app/
 
 # Supported Models
 This application supports text and embedding models from OpenAI:
